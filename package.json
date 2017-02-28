@@ -1,0 +1,20 @@
+{
+  "name": "react-express-websocket",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "config": "^1.21.0",
+    "moment": "^2.15.2",
+    "no-if-validator": "^1.0.0-4",
+    "restify": "4.1.x"
+  },
+  "scripts": {
+    "start": "server.js",
+    "test": "jest"
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}
