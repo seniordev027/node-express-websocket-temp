@@ -9,6 +9,7 @@ class Chat {
 
     this.existsParticipant = this.existsParticipant.bind(this);
     this._getNewParticipantId = this._getNewParticipantId.bind(this);
+    this.getParticipant = this.getParticipant.bind(this);
   }
 
   addParticipant(participantName) {
@@ -41,6 +42,15 @@ class Chat {
         return true
     }
     return false;
+  }
+
+  getParticipant(id) {
+    for (let i = 0; i < this.participants.length; i++) {
+      if (this.participants[i].id == id)
+        return this.participants[i];
+    }
+
+    return null;
   }
 
   _getNewParticipantId() {
