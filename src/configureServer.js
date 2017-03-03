@@ -1,6 +1,3 @@
-let Router = require('./routes/Router')
-let router = new Router()
-
 let configureServer = (server, restify) => {
   server.use(restify.bodyParser())
   server.use(restify.queryParser())
@@ -11,8 +8,6 @@ let configureServer = (server, restify) => {
 
     next()
   })
-
-  router.addAll(server)
 }
 
 module.exports = configureServer

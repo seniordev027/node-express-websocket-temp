@@ -1,6 +1,5 @@
 let Routes = require('./Routes')
 let ChatManager = require('../models/ChatManager')
-let websocket = require('socket.io')
 
 class RootRoutes extends Routes {
   constructor () {
@@ -16,18 +15,16 @@ class RootRoutes extends Routes {
     this._getParticipant = this._getParticipant.bind(this)
   }
 
+  setSocket(websocket){
+    this._socket = websocket
+  }
+
   _addAllRoutes (server) {
     server.post('/api/chat/create', super._bodyIsNotNull, this._createChat, this._returnInfo)
     server.put('/api/chat/:id/participant/:participantid/message', super._paramsIsNotNull, super._bodyIsNotNull, this._getChat, this._checkParticipant, this._sendMessage)
     server.put('/api/chat/:id/participant', super._paramsIsNotNull, super._bodyIsNotNull, this._getChat, this._addParticipant, this._returnInfo)
     server.del('/api/chat/:id/participant/:participantid', super._paramsIsNotNull, this._getChat, this._checkParticipant, this._deleteParticipant, this._returnInfo)
     server.get('/api/chat/:id/participant/:participantid', super._paramsIsNotNull, this._getChat, this._checkParticipant, this._getParticipant, this._returnInfo)
-
-    this._io = websocket(server, { path: '/api/chat/connect', origins: 'http://localhost:* http://127.0.0.1:*' })
-    this._io.on('connection', (socket) => {
-      console.log('new client connected')
-      // socket.emit('new-connection', {chatid: req.chat.id, participant: req.participant})
-    })
   }
 
   _createChat (req, res, next) {
@@ -107,7 +104,7 @@ class RootRoutes extends Routes {
   }
 
   _sendMessage (req, res, next) {
-    this._io.emit('new-message', { chatid: req.params.id, participantid: req.params.participantid, message: req.body.message })
+    this._socket.emit('new-message', { chatid: req.params.id, participantid: req.params.participantid, message: req.body.message })
     res.json(200, { code: 200, message: 'Message send', resp: null })
   }
 }
