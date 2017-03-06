@@ -1,5 +1,7 @@
 let Chat = require('./Chat');
-let chats = [];
+let aChat = new Chat(1);
+aChat.addParticipant('participant')
+let chats = [aChat];
 
 class ChatManager {
   static createChat(names) {

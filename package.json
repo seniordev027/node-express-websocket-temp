@@ -5,11 +5,14 @@
   "devDependencies": {},
   "dependencies": {
     "body-parser": "^1.16.0",
+    "bufferutil": "^3.0.0",
     "config": "^1.21.0",
     "moment": "^2.15.2",
+    "ms": "^0.7.2",
     "no-if-validator": "^1.0.0-4",
     "restify": "4.1.x",
-    "socket.io": "^1.7.3"
+    "utf-8-validate": "^3.0.1",
+    "websocket": "^1.0.24"
   },
   "scripts": {
     "start": "server.js",
