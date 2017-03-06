@@ -49,7 +49,6 @@ class Chat {
       if (this.participants[i].id == id)
         return this.participants[i];
     }
-
     return null;
   }
 
