@@ -42,6 +42,7 @@ class RootRoutes extends Routes {
     server.put('/api/chat/:id/participant', super._paramsIsNotNull, super._bodyIsNotNull, this._getChat, this._addParticipant, this._returnInfo, this._broadcastMessage)
     server.del('/api/chat/:id/participant/:participantid', super._paramsIsNotNull, this._getChat, this._checkParticipant, this._deleteParticipant, this._returnInfo, this._broadcastMessage)
     server.get('/api/chat/:id/participant/:participantid', super._paramsIsNotNull, this._getChat, this._checkParticipant, this._getParticipant, this._returnInfo)
+    server.get('/api/chat/:id', super._paramsIsNotNull, this._getChat, this._returnInfo)
   }
 
   _createChat(req, res, next) {
