@@ -83,7 +83,7 @@ class RootRoutes extends Routes {
         event: 'remove-participant',
         data: {
           chatid: req.chat.id,
-          participant: req.participant
+          participant: req.params.participantid
         }
       }
       next()
